@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<title>SANKEY Experiment</title>
+<style>
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+ 
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+ 
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+ 
+.link:hover {
+  stroke-opacity: .5;
+}
+
+.chart{
+  border-style: groove;
+  border-width: 5px;
+}
+
+h2{
+  text-align: center;
+}
+</style>
+<body>
+<div class="page-header">
+  <h2>Copies and Total Checkouts of Book By Category over Years</h2>
+</div>
+<div class = "container">
+  <div id = "copies" class = "chart col-md-6">
+    <h2 class="well well-sm">Copies</h2>
+  </div>
+  <div id = "checkouts" class = "chart col-md-6">
+    <h2 class="well well-sm">Checkouts</h2>
+  </div>
+</div>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="sankey.js"></script>
+<script src="copies.js"></script>
+<script src="checkouts.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+
+
+#chart_div .bar_style_coauthor_FA{ background-color: #4D8B4D; }
+#chart_div .bar_style_coauthor_ST{ background-color: #FCC240; }
+#chart_div .bar_style_coauthor_RE{ background-color: #BF4B31; }
+#chart_div .bar_style_coauthor_IN{ background-color: #4B3929; }
+
+.header{
+    font-weight: 700;
+    font-variant: small-caps;
+}
+
+#chart_div {
+    background-color: white;
+    margin: 0px 25px 20px 25px;
+}
+
+#pagecell{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    display:inline-block;
+    background-color: #ffffff;
+}
+
+body {
+    font-family: Arial,sans-serif;
+    color: #333333;
+    margin: 0px;
+    padding: 0px;
+    background: #cccccc url("http://cs.umd.edu/~bederson/images/bg-grad.jpg") fixed;
+}
+
+#pageName {
+    padding: 0px 0px 14px 10px;
+    margin: 0px;
+}
+
+#pageName h2 {
+    font: bold 175% Arial,sans-serif;
+    color: #000000;
+    margin: 0px;
+    padding: 0px;
+}
+
+#pageName img {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 0px;
+    margin: 0px;
+    z-index:2;
+}
+
+#pageName a.mainTitle:link, a.mainTitle:visited{
+    color: #005FA9;
+    text-decoration: none;
+}
+
+#pageName a.mainTitle:hover{
+    text-decoration: underline;
+}
+
+.KeshifCredit{
+    float:right;
+    margin: 15px;
+    font-size: 0.5em;
+    font-style: italic;
+    color: lightgray;
+    text-decoration: none;
+}
+.KeshifCredit:hover{
+    color: gray;
+}
+
+.paperName{
+    cursor:pointer;
+}
+.paperName:hover{
+    color: orangered;
+}
+.authorNames{
+    font-weight: 300;
+}
+.benb{
+    font-style: italic;
+}
+.doilink{
+    margin-left: 10px;
+    font-size: 0.7em;
+    vertical-align: top;
+}
+.externallink{
+    margin-left: 3px;
+    font-size: 0.7em;
+    vertical-align: top;
+}
+.pdflink{
+    margin-left: 10px;
+    vertical-align: top;
+}
+.item_details{
+    margin-left: 5px;
+}
+.venueInfo{
+    margin-left: 5px;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+.topics{
+    font-size: 0.9em;
+    font-weight: 300;
+    margin-left: 5px;
+    font-variant: small-caps;
+}
+.pubLink{
+    color: #005FA9;
+    display: inline-block;
+    text-decoration: none;
+}
+.pubLink:hover {
+    color: orangered !important;
+    text-decoration: none;
+}
+
+.pdfImage{
+    position:absolute;
+    right: 0px;
+    height: 100%;
+}
+.content{
+    padding-bottom: 4px;
+    padding-right: 40px;
+}
+
+
+

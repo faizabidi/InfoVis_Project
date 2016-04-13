@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<head>
+<title>Vision Club</title><meta charset="utf-8">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="./jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="./keshif.js" charset="utf-8"></script>
+<link rel="stylesheet" href="./keshif.css"/ type="text/css">
+<link rel="stylesheet" href="./font-awesome.min.css">
+
+<script type="text/javascript" src="./moment.min.js" charset="utf-8"></script>
+
+<!-- Logging features -->
+<script type="text/javascript" src="modernizr.js" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+
+
+function resizeChart(){
+	var h=$(window).height()-90;
+	h = 700; // temp
+	var w=$(window).width()-29;
+	h = Math.max(h,500);
+	w = Math.max(w,700);
+	w-=50;
+	if($('#chart_div').height()===h && $('#chart_div').width()===w) return false;
+	$('#chart_div').height(h);
+	$('#chart_div').width (w);
+	return true;
+}
+
+google.setOnLoadCallback(function() {
+		resizeChart();
+		$(window).resize(function() {
+			if(resizeChart()) browser.updateLayout();
+			});
+
+		var authorCol, pubCol, keywordCol;
+
+		browser = new kshf.Browser({
+domID : "#chart_div",
+listMaxColWidthMult: 0.4,
+categoryTextWidth:185,
+
+source : {
+gdocId : '1J2GAG-ncYAq-MBeD1-LejVSw5G4NprD5ap-6dHVx4PE',
+query  : "select C",			
+sheets : [
+{name: "LibVis"}
+
+]
+},
+loadedCb: function(){
+authorCol = kshf.dt_ColNames.LibVis;
+pubCol = kshf.dt_ColNames.LibVis;
+keywordCol = kshf.dt_ColNames.LibVis;
+
+
+},
+readyCb: function(){
+		 $(".paperName").click(function(d){
+				 browser.listDisplay.showListItemDetails(d.currentTarget.parentNode.parentNode.parentNode.__data__);
+				 });
+
+	 },
+
+summary: [
+{name: "Rdate" , panel: "bottom", collapsed: "false"}
+
+],
+	itemDisplay: {
+sortColWidth: 45,
+	      sortingOpts : [
+	      { name: 'Last Checkout Date',
+value: function(pub){return pub.data[pubCol['Loutdate']]}
+	      }
+	      ],
+
+		      contentFunc : function(d){
+			      var j;
+			      var str="";
+
+
+			      //Book name
+			      str+="<div class=''> <span>";
+			      str+="<span class='paperName'>"+d.data[pubCol.Title]+"</span>";
+
+			      str+="</div>";
+
+			      str+="<span class='item_details'>";
+
+			      // author names
+			      var authors = d.data[pubCol.Author];
+			      str+="<div class=\"Author\"><span class='header'></span> ";
+			      str+=authors;
+			      str+="</div>";
+
+			      //Publisher Info
+			      str+="<div class=\"Publisher iteminfo_3\">&#9733; "+d.data[pubCol.Publisher]+"</div>";		
+			      str+="</div>";
+
+			      // Call Numbers + details
+			      str+="<div class='CallNumber'><span style='font-weight:bolder;'></span>";
+
+			      str+=" " + d.data[pubCol.Call_Num];
+
+			      str+="</div>";
+
+			      //Fund code
+			      str+="<div class='Fund_code'><span style='font-weight:bolder;'></span>";
+			      str+= " " + d.data[pubCol.Fund_Code];
+			      str+="</div>";
+
+			      return str;
+		      }
+	}
+});
+});
+
+</script>
+<style>
+
+#chart_div .bar_style_coauthor_FA{ background-color: #ffff00; }
+#chart_div .bar_style_coauthor_ST{ background-color: #ffff00; }
+#chart_div .bar_style_coauthor_RE{ background-color: #ffff00; }
+#chart_div .bar_style_coauthor_IN{ background-color: #ffff00; }
+
+.header{
+	font-weight: 700;
+	font-variant: small-caps;
+}
+
+#chart_div {
+	background-color: #ffffff;
+margin: 0px 25px 20px 25px;
+}
+
+#pagecell{
+position: relative;
+top: 10px;
+left: 10px;
+display:inline-block;
+	background-color: #9EB2BC;
+}
+
+body {
+	font-family: Arial,sans-serif;
+color: #00000;
+margin: 0px;
+padding: 0px;
+
+}
+
+#pageName {
+padding: 0px 0px 14px 10px;
+margin: 0px;
+}
+
+#pageName h2 {
+font: bold 175% Arial,sans-serif;
+color: #FFFFFF;
+margin: 0px;
+padding: 0px;
+}
+
+#pageName img {
+position: absolute;
+top: 0px;
+right: 0px;
+padding: 0px;
+margin: 0px;
+	z-index:2;
+}
+
+#pageName a.mainTitle:link, a.mainTitle:visited{
+color: #FFFFFF;
+       text-decoration: none;
+}
+
+#pageName a.mainTitle:hover{
+	text-decoration: underline;
+}
+
+.KeshifCredit{
+float:right;
+margin: 15px;
+	font-size: 0.5em;
+	font-style: italic;
+color: lightgray;
+       text-decoration: none;
+}
+.KeshifCredit:hover{
+color: gray;
+}
+
+.paperName{
+cursor:pointer;
+}
+.paperName:hover{
+color: orangered;
+}
+.Author{
+	font-weight: 300;
+}
+.benb{
+	font-style: italic;
+}
+.doilink{
+	margin-left: 10px;
+	font-size: 0.7em;
+	vertical-align: top;
+}
+.externallink{
+	margin-left: 3px;
+	font-size: 0.7em;
+	vertical-align: top;
+}
+.pdflink{
+	margin-left: 10px;
+	vertical-align: top;
+}
+.Publisher{
+	margin-left: 5px;
+}
+.CallNumber{
+	margin-left: 5px;
+	font-size: 0.9em;
+	font-weight: 300;
+}
+.Fund_code{
+	font-size: 0.9em;
+	font-weight: 300;
+	margin-left: 5px;
+	font-variant: small-caps;
+}
+.pubLink{
+color: #005FA9;
+display: inline-block;
+	 text-decoration: none;
+}
+.pubLink:hover {
+color:blue;
+      text-decoration: none;
+}
+
+.pdfImage{
+position:absolute;
+right: 0px;
+height: 100%;
+}
+.content{
+	padding-bottom: 4px;
+	padding-right: 40px;
+}
+
+</style>
+<link rel="icon" 
+      type="image/png" 
+      href="http://tmorra.info/themes/sponsor/virginiatech.png">
+</head>
+
+<body onmousemove="logIf.setSessionID()">
+<!--<a href='/Users/faizabidi/Downloads/final/sankey_viz.html'>Faiz Abidi</a>-->
+<div id="pagecell">
+<div id="pageName">
+<font size="6" color="white">Vision Club </font><a href='/Users/faizabidi/Downloads/final/sankey_viz.html' style="float:right">(Sankey Diagram)</a>
+</div>
+<div id="chart_div"></div>
+</div>
+</body>
+
+</html>
+
